@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokepass - Armazene seus Times Pokémon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pokepass</h1>
+        <p>Guarde e gerencie seus times de Pokémon facilmente!</p>
+    </header>
+    <main>
+        <section class="team-form">
+            <h2>Cadastre um Novo Time</h2>
+            <form id="teamForm">
+                <input type="text" id="teamName" placeholder="Nome do Time" required>
+                <input type="text" id="teamPokemon" placeholder="Pokémons (separados por vírgulas)" required>
+                <button type="submit">Adicionar Time</button>
+            </form>
+        </section>
+        <section class="team-list">
+            <h2>Times Cadastrados</h2>
+            <ul id="teamList">
+                <li>Nenhum time cadastrado ainda.</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        const teamForm = document.getElementById('teamForm');
+        const teamList = document.getElementById('teamList');
+
+        teamForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const teamName = document.getElementById('teamName').value;
+            const teamPokemon = document.getElementById('teamPokemon').value;
+
+            const teamItem = document.createElement('li');
+            teamItem.textContent = `${teamName} - ${teamPokemon}`;
+
+            teamList.appendChild(teamItem);
+
+            teamForm.reset();
+        });
+    </script>
+</body>
+</html>
